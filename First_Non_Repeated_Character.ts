@@ -22,4 +22,9 @@ function fristNonRepeated(str: string) {
   return false;
 }
 
+
 console.log(fristNonRepeated('daaid'));
+
+// Maps: key -> value
+// Sets: only keys -> doesn't allow doublicated key 
+// [1,2,3,3,2,1,4,5] -> pass it to a Set an you will remove repeated items 
