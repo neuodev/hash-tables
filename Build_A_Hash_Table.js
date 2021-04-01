@@ -49,7 +49,21 @@ class LinkedList {
     console.log(currentNode);
   }
 
-  remove(key) {}
+  remove(key) {
+    if (this.head.node.key === key) return this.removeHead();
+    if (this.tail.node.key === key) return this.removeTail();
+    let currentNode = this.head.next;
+    let prev = this.head;
+    while (currentNode) {
+      if (currentNode.node.key === key) return;
+      prev = currentNode;
+      currentNode = currentNode.next;
+    }
+    console.log(currentNode);
+    prev.next = currentNode.next;
+    currentNode.next = null;
+    return currentNode;
+  }
 }
 
 class HashTable {
