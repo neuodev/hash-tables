@@ -63,6 +63,8 @@ class HashTable {
     let idx = this._hash(key);
     console.log(idx);
     let bucket = this.hashTable[idx];
+    const value = bucket.get(key);
+    return value;
   }
 
   _hash(key) {
@@ -77,4 +79,4 @@ console.log(hashTable.put(2, 'A'));
 console.log(hashTable.put(3, 'B'));
 console.log(hashTable.put(4, 'C'));
 console.log(hashTable);
-console.log(hashTable.get(2));
+console.log(hashTable.get(3));
