@@ -1,7 +1,7 @@
-function fristNonRepeated(str) {
+function fristNonRepeated(str: string) {
   if (!str) return false;
   if (str.length === 1) return str;
-  str = str.toLowerCase()
+  str = str.toLowerCase();
   let hashTable = {};
   for (let i = 0; i < str.length; i++) {
     let char = str[i];
@@ -18,10 +18,8 @@ function fristNonRepeated(str) {
     let item = hashTable[key];
     if (item === 1) return key;
   }
-  
 
   return false;
 }
-
 
 console.log(fristNonRepeated('daaid'));
