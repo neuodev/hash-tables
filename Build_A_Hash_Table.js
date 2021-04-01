@@ -2,7 +2,7 @@ class Node {
   constructor(key, value) {
     this.node = {
       key,
-      vlaue,
+      value,
     };
     this.next = null;
   }
@@ -20,10 +20,27 @@ class HashTable {
     this.hashTable = new Array(size).fill(new LinkedList());
   }
 
-  put(k, v) {}
+  put(key, value) {
+    const hash = this._hash(key);
+    const hashTable = this.hashTable;
 
-  _hash(value) {
-    let hash = value % this.hashTable.length;
+    let node = new Node(key, value);
+
+    let linkedList = hashTable[hash];
+    if (!linkedList.head) {
+      linkedList.head = linkedList.tail = node;
+    } else {
+      let currentNode = linkedList.head;
+      while (currentNode.next) {
+        currentNode = currentNode.next;
+      }
+      currentNode.next = node;
+    }
+    return node;
+  }
+
+  _hash(key) {
+    let hash = key % this.hashTable.length;
     return hash;
   }
 }
