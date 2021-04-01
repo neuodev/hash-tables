@@ -24,6 +24,8 @@ class LinkedList {
     }
     return node;
   }
+
+  set(value) {}
 }
 
 class HashTable {
@@ -33,12 +35,23 @@ class HashTable {
 
   put(key, value) {
     const idx = this._hash(key);
-    const hashTable = this.hashTable;
-    if (!hashTable[idx]) {
+    let bucket = this.hashTable[idx];
+    if (!bucket) {
       const linkedList = new LinkedList();
-      hashTable[idx] = linkedList;
+      this.hashTable[idx] = linkedList;
     }
-    const node = hashTable[idx].push(key, value);
+    // loop over the linkedlist to make sure that does not store a doublicated key
+    let currentNode = this.hashTable[idx].head;
+    while (currentNode) {
+      if (currentNode.node.key === idx) {
+        currentNode.node.value = value;
+        return currentNode;
+      }
+      currentNode = currentNode.next;
+    }
+
+    // add the node to the end of the linked list
+    const node = this.hashTable[idx].push(key, value);
     return node;
   }
 
@@ -51,3 +64,6 @@ class HashTable {
 const hashTable = new HashTable(10);
 // console.log(hashTable.put(1, 'A'));
 console.log(hashTable.put(2, 'A'));
+console.log(hashTable.put(2, 'B'));
+console.log(hashTable.put(2, 'C'));
+console.log(hashTable);
