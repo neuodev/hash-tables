@@ -24,8 +24,13 @@ class LinkedList {
     }
     return node;
   }
-
-  set(value) {}
+  get(key) {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.node.key === key) return currentNode.node.value;
+      currentNode = currentNode.next;
+    }
+  }
 }
 
 class HashTable {
@@ -54,7 +59,11 @@ class HashTable {
     const node = this.hashTable[idx].push(key, value);
     return node;
   }
-  get(ke) {}
+  get(key) {
+    let idx = this._hash(key);
+    console.log(idx);
+    let bucket = this.hashTable[idx];
+  }
 
   _hash(key) {
     let hash = key % this.hashTable.length;
@@ -65,6 +74,7 @@ class HashTable {
 const hashTable = new HashTable(10);
 // console.log(hashTable.put(1, 'A'));
 console.log(hashTable.put(2, 'A'));
-console.log(hashTable.put(2, 'B'));
-console.log(hashTable.put(2, 'C'));
+console.log(hashTable.put(3, 'B'));
+console.log(hashTable.put(4, 'C'));
 console.log(hashTable);
+console.log(hashTable.get(2));
