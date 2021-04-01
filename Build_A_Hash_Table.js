@@ -31,6 +31,16 @@ class LinkedList {
       currentNode = currentNode.next;
     }
   }
+
+  removeHead() {
+    if (!this.head) return false;
+    let node = this.head;
+    this.head = this.head.next;
+    node.next = null;
+    return node;
+  }
+
+  remove(key) {}
 }
 
 class HashTable {
@@ -71,6 +81,8 @@ class HashTable {
     const value = bucket.get(key);
     return value;
   }
+
+  remove(key) {}
 
   _hash(key) {
     let hash = key % this.hashTable.length;
