@@ -61,8 +61,13 @@ class HashTable {
   }
   get(key) {
     let idx = this._hash(key);
-    console.log(idx);
+
+    if (idx >= this.hashTable.length || idx < 0) return false;
+
     let bucket = this.hashTable[idx];
+
+    if (!bucket) return false;
+
     const value = bucket.get(key);
     return value;
   }
@@ -79,4 +84,4 @@ console.log(hashTable.put(2, 'A'));
 console.log(hashTable.put(3, 'B'));
 console.log(hashTable.put(4, 'C'));
 console.log(hashTable);
-console.log(hashTable.get(3));
+console.log(hashTable.get(4));
