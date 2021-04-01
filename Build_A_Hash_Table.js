@@ -40,6 +40,15 @@ class LinkedList {
     return node;
   }
 
+  removeTail() {
+    if (!this.tail) return false;
+    let currentNode = this.head;
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+    console.log(currentNode);
+  }
+
   remove(key) {}
 }
 
