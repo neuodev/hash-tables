@@ -54,6 +54,7 @@ class HashTable {
     const node = this.hashTable[idx].push(key, value);
     return node;
   }
+  get(ke) {}
 
   _hash(key) {
     let hash = key % this.hashTable.length;
