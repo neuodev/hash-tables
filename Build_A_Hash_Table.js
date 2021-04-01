@@ -19,6 +19,11 @@ class HashTable {
   constructor(size) {
     this.hashTable = new Array(size).fill(new LinkedList());
   }
+
+  put(k, v) {}
+
+  _hash(value) {
+    let hash = value % this.hashTable.length;
+    return hash;
+  }
 }
-
-
