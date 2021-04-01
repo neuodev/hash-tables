@@ -43,10 +43,14 @@ class LinkedList {
   removeTail() {
     if (!this.tail) return false;
     let currentNode = this.head;
+    let prev;
     while (currentNode.next) {
+      prev = currentNode;
       currentNode = currentNode.next;
     }
-    console.log(currentNode);
+    prev.next = null;
+    this.tail = prev;
+    return currentNode;
   }
 
   remove(key) {
@@ -112,6 +116,7 @@ class HashTable {
 
     const node = this.hashTable[idx].remove(key);
     console.log(node);
+    return node;
   }
 
   _hash(key) {
@@ -120,10 +125,10 @@ class HashTable {
   }
 }
 
-const hashTable = new HashTable(10);
+const hashTable = new HashTable(1);
 // console.log(hashTable.put(1, 'A'));
-console.log(hashTable.put(2, 'A'));
-console.log(hashTable.put(3, 'B'));
-console.log(hashTable.put(4, 'C'));
-console.log(hashTable);
-console.log(hashTable.get(4));
+console.log(hashTable.put(1, 'A'));
+console.log(hashTable.put(2, 'B'));
+// console.log(hashTable.put(3, 'C'));
+// console.log(hashTable.put(4, 'C'));
+console.log(hashTable.remove(2));
