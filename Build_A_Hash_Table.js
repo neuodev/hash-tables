@@ -105,7 +105,14 @@ class HashTable {
     return value;
   }
 
-  remove(key) {}
+  remove(key) {
+    let idx = this._hash(key);
+
+    if (idx >= this.hashTable.length || idx < 0) return false;
+
+    const node = this.hashTable[idx].remove(key);
+    console.log(node);
+  }
 
   _hash(key) {
     let hash = key % this.hashTable.length;
