@@ -14,3 +14,11 @@ class LinkedList {
     this.tail = null;
   }
 }
+
+class HashTable {
+  constructor(size) {
+    this.hashTable = new Array(size).fill(new LinkedList());
+  }
+}
+
+
