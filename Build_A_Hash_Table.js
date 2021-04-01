@@ -111,7 +111,7 @@ class HashTable {
   remove(key) {
     let idx = this._hash(key);
 
-    if (idx >= this.hashTable.length || idx < 0) return false;
+    if (key >= this.hashTable.length || key < 0) return false;
 
     const node = this.hashTable[idx].remove(key);
     console.log(node);
