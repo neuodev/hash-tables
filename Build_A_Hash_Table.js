@@ -59,11 +59,10 @@ class LinkedList {
     let currentNode = this.head.next;
     let prev = this.head;
     while (currentNode) {
-      if (currentNode.node.key === key) return;
+      if (currentNode.node.key === key) break;
       prev = currentNode;
       currentNode = currentNode.next;
     }
-    console.log(currentNode);
     prev.next = currentNode.next;
     currentNode.next = null;
     return currentNode;
@@ -129,6 +128,6 @@ const hashTable = new HashTable(1);
 // console.log(hashTable.put(1, 'A'));
 console.log(hashTable.put(1, 'A'));
 console.log(hashTable.put(2, 'B'));
-// console.log(hashTable.put(3, 'C'));
-// console.log(hashTable.put(4, 'C'));
+console.log(hashTable.put(3, 'C'));
+console.log(hashTable.put(4, 'C'));
 console.log(hashTable.remove(2));
