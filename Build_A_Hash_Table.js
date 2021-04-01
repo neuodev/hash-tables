@@ -13,34 +13,41 @@ class LinkedList {
     this.head = null;
     this.tail = null;
   }
+
+  push(key, value) {
+    const node = new Node(key, value);
+    if (!this.head) {
+      this.head = this.tail = node;
+    } else {
+      this.tail.next = node;
+      this.tail = node;
+    }
+    return node;
+  }
 }
 
 class HashTable {
   constructor(size) {
-    this.hashTable = new Array(size).fill(new LinkedList());
+    this.hashTable = new Array(size);
   }
 
   put(key, value) {
-    const hash = this._hash(key);
+    const idx = this._hash(key);
     const hashTable = this.hashTable;
-
-    let node = new Node(key, value);
-
-    let linkedList = hashTable[hash];
-    if (!linkedList.head) {
-      linkedList.head = linkedList.tail = node;
-    } else {
-      let currentNode = linkedList.head;
-      while (currentNode.next) {
-        currentNode = currentNode.next;
-      }
-      currentNode.next = node;
+    if (!hashTable[idx]) {
+      const linkedList = new LinkedList();
+      hashTable[idx] = linkedList;
     }
+    const node = hashTable[idx].push(key, value);
     return node;
   }
 
   _hash(key) {
     let hash = key % this.hashTable.length;
-    return hash;
+    return Math.abs(hash);
   }
 }
+
+const hashTable = new HashTable(10);
+// console.log(hashTable.put(1, 'A'));
+console.log(hashTable.put(2, 'A'));
