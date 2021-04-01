@@ -22,4 +22,5 @@ function fristNonRepeated(str) {
   return false;
 }
 
+
 console.log(fristNonRepeated('A Green Apple'));
